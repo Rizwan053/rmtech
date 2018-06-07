@@ -14,9 +14,15 @@
                 </li>
               
                 <li id="act" >
-                    <a href="table.php">
+                    <a href="posts.php">
+                        <i class="ti-layout-list-post"></i>
+                        <p>Posts</p>
+                    </a>
+                </li>
+                <li id="act" >
+                    <a href="categories.php">
                         <i class="ti-view-list-alt"></i>
-                        <p>Table List</p>
+                        <p>Categories</p>
                     </a>
                 </li>
                

@@ -1,0 +1,94 @@
+<?php require_once('includes/admin_header.php') ?>
+
+
+
+<?php 
+
+if(empty($_GET['id'])){
+    header('loction:posts.php');
+}else{
+
+if (isset($_POST['submit'])) {
+    $posts = new Post();
+    $posts->id = $_GET['id'];    
+    $posts->title = $_POST['title'];
+    $posts->url = $_POST['url'];
+    $posts->body = $_POST['body'];
+
+    $posts->update();
+
+    // header('location:posts.php');
+        echo "<script>alert('Post Updated Succesfully');document.location='posts.php'</script>";
+    
+
+}
+}
+
+
+
+?> 
+
+<div class="wrapper">
+	<div class="sidebar" data-background-color="white" data-active-color="danger">
+
+    <!--
+		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+	-->
+
+<?php require_once('includes/admin_sidebar.php') ?>
+    	
+    </div>
+
+    <div class="main-panel">
+<?php require_once('includes/admin_nav.php') ?>
+		
+<?php 
+$post = Post::find_by_id($_GET['id']);
+?>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                
+                                <h4 class="title">Edit Post</h4>
+                                <p class="category">Fill All Field Required:</p>
+                            </div>
+                            <div class="content table-responsive ">
+
+                        <form action="" method="post">
+                                    <div class="form-group">
+                                        <label for="title">Title</label>
+                                        <input type="text" name="title" class="form-control" value="<?php echo $post->title?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="url">URL</label>                                        
+                                        <input type="text" name="url" class="form-control" value="<?php echo $post->url?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="body">Body</label>                                        
+                                        <textarea class="form-control" name="body" id="" cols="30" rows="10"><?php echo $post->body ?></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" name="submit" value="Update Post" class="btn btn-info">
+                                    </div>
+                        </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
+
+
+                </div>
+            </div>
+        </div>
+
+<?php require_once('includes/admin_footer.php') ?>
+        

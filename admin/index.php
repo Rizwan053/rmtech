@@ -16,16 +16,9 @@
         
 <?php require_once('includes/admin_nav.php') ?>
 
-
 <?php 
 
-$none = Db_object::find_all();
-foreach ($none as $no) {
-    
-}
-
 ?>
-
 
         <div class="content">
             <div class="container-fluid">
@@ -42,6 +35,7 @@ foreach ($none as $no) {
                                     <div class="col-xs-7">
                                         <div class="numbers">
                                             <p>Capacity</p>
+                                           
                                             105GB
                                         </div>
                                     </div>

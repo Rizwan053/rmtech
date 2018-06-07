@@ -27,7 +27,7 @@ class Database{
 
     public function confirm_query($result){
         if(!$result){
-            die('Query Failed'. $this->con->errno);
+            die('Query Failed '. $this->con->error);
         }
     }
     
