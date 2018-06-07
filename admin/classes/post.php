@@ -3,24 +3,31 @@
 class Post extends Db_object
 {
     protected static $db_table = 'posts';
-    protected static $db_table_field = array('id','category_id', 'title', 'body', 'url');
+    protected static $db_table_field = array('id','category_id', 'title', 'body', 'url', 'image');
     public $id;
     public $category_id;
     public $title;
     public $url;
     public $body;
+    public $image;
+    public $tmp_path;
+    public $upload_directory = 'images';
 
-    // public static function joins(){
-    //     global $database;
-    //     $sql = "SELECT categories.name,categories.id FROM categories LEFT JOIN posts ON categories.id = posts.category_id"; 
-    //     return self::find_by_query($sql);
-        // if($database->query($sql)){
-        //     return true;
-        // }else{
-        //     return false;
-        // }
-           
-    // }
+    public function uploads($file){
+		if(empty($file) || !$file || !is_array($file)) {
+        return "No File for Upload! Try Again";
+        }else{
+            $this->image = basename($file['name']);
+            $this->tmp_path = $file['tmp_name'];
+        }
+        
+    }
+
+    public function path(){
+        return $this->upload_directory.'/'.$this->image;
+    }
+
+    
 
 }//endOfclass
 

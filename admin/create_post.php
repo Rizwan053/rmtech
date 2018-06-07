@@ -10,12 +10,15 @@ if(isset($_POST['submit'])){
         $posts->title = $_POST['title'];
         $posts->url = $_POST['url'];
         $posts->body = $_POST['body'];
+        $posts->uploads($_FILES['image']);
+        $target = "images/$posts->image";
+        move_uploaded_file($posts->tmp_path, $target);
 
     $posts->create();
     
     
-    // header('location:create_post.php');
-    echo "<script>alert('Post Added Succesfully');document.location='posts.php'</script>";
+    header('location:posts.php');
+    // echo "<script>alert('Post Added Succesfully');document.location='posts.php'</script>";
     
 
 }
@@ -52,10 +55,14 @@ if(isset($_POST['submit'])){
                                 <p class="category">Fill All Field Required:</p>
                             </div>
                             <div class="content table-responsive ">
-                        <form action="" method="post">
+                        <form action="" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label for="title">Title</label>
                                         <input type="text" name="title" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="image">Uplaod:</label>
+                                        <input type="file" name="image" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label for="url">URL</label>                                        

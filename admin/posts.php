@@ -36,7 +36,9 @@ $posts = Post::find_all();
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-striped">
                                     <thead>
+                                    	<th>ID</th>
                                     	<th>Title</th>
+                                    	<th>Category</th>
                                     	<th>URL</th>
                                     	<th>Body</th>
                                     	<th>Edit</th>
@@ -46,7 +48,12 @@ $posts = Post::find_all();
 <?php foreach ($posts as $post): ?>
 
                                     <tr>
+                                        	<td><?php echo $post->id ? $post->id : "Not Available" ?></td>
+                                    
                                         	<td><?php echo $post->title ? $post->title : "Not Available"?></td>
+                                        	
+                                            <?php $category = Category::find_by_id($post->category_id) ?>
+                                            <td><?php echo $category->name ? $category->name : "Not Available" ?></td>
                                         	<td><?php echo $post->url ? $post->url : "Not Available"?></td>
                                         	<td><?php echo $post->body ? $post->body : "Not Available"?></td>
                                         	<td><a class="btn btn-info" href="edit_post.php?id=<?php echo $post->id?>">Edit</a></td>
