@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){
 }
 if(isset($_GET['id'])){
     $category = Category::find_by_id($_GET['id']);
-    $category->delete();
+    $category->cascade_delete();
     header('location:categories.php');
 }
 

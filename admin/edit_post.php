@@ -70,6 +70,20 @@ $post = Post::find_by_id($_GET['id']);
                                         <input type="text" name="url" class="form-control" value="<?php echo $post->url?>">
                                     </div>
                                     <div class="form-group">
+                                    <label for="category_id">Categories Option</label>    
+                                        <select class="custom-select" name="category_id" id="inputGroupSelect01">
+
+                                        <?php $cate = Category::find_by_id($post->category_id) ?>
+                                        <option value="<?php echo $cate->id; ?>"><?php echo $cate->name; ?></option>
+
+                                        <?php $categories = Category::find_all() ?>                                        
+                                        <?php foreach ($categories as $category) : ?>
+                                        <option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
+                                        <?php endforeach; ?>
+                                        </select>     
+
+                                    </div>
+                                    <div class="form-group">
                                         <label for="body">Body</label>                                        
                                         <textarea class="form-control" name="body" id="" cols="30" rows="10"><?php echo $post->body ?></textarea>
                                     </div>

@@ -72,7 +72,7 @@ if(isset($_POST['submit'])){
                                         <?php endforeach; ?>
                                         </select>     
 
-                                        </div>
+                                    </div>
 
                                     <div class="form-group">
                                         <label for="body">Body</label>                                        
