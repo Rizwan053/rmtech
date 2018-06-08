@@ -2,97 +2,29 @@
 			data-swiper-speed="500" data-swiper-autoplay="10000" data-swiper-margin="0" data-swiper-slides-per-view="4"
 			data-swiper-breakpoints="true" data-swiper-loop="true" >
 			<div class="swiper-wrapper">
+			
+<?php $categories = Category::find_all();
 
+if($categories){
+?>
+<?php foreach($categories as $category): ?>
 				<div class="swiper-slide">
 					<a class="slider-category" href="#">
-						<div class="blog-image"><img src="images/category-1-400x250.jpg" alt="Blog Image"></div>
+						<div class="blog-image"><img src="images/category-<?php echo rand(1,6)?>-400x250.jpg" alt="Blog Image"></div>
 
 						<div class="category">
 							<div class="display-table center-text">
 								<div class="display-table-cell">
-									<h3><b>BEAUTY</b></h3>
+									<h3><b><?php echo $category->name?></b></h3>
 								</div>
 							</div>
 						</div>
 
 					</a>
 				</div><!-- swiper-slide -->
-
-				<div class="swiper-slide">
-					<a class="slider-category" href="#">
-						<div class="blog-image"><img src="images/category-2-400x250.jpg" alt="Blog Image"></div>
-
-						<div class="category">
-							<div class="display-table center-text">
-								<div class="display-table-cell">
-									<h3><b>SPORT</b></h3>
-								</div>
-							</div>
-						</div>
-
-					</a>
-				</div><!-- swiper-slide -->
-
-				<div class="swiper-slide">
-					<a class="slider-category" href="#">
-						<div class="blog-image"><img src="images/category-3-400x250.jpg" alt="Blog Image"></div>
-
-						<div class="category">
-							<div class="display-table center-text">
-								<div class="display-table-cell">
-									<h3><b>HEALTH</b></h3>
-								</div>
-							</div>
-						</div>
-
-					</a>
-				</div><!-- swiper-slide -->
-
-				<div class="swiper-slide">
-					<a class="slider-category" href="#">
-						<div class="blog-image"><img src="images/category-4-400x250.jpg" alt="Blog Image"></div>
-
-						<div class="category">
-							<div class="display-table center-text">
-								<div class="display-table-cell">
-									<h3><b>DESIGN</b></h3>
-								</div>
-							</div>
-						</div>
-
-					</a>
-				</div><!-- swiper-slide -->
-
-				<div class="swiper-slide">
-					<a class="slider-category" href="#">
-						<div class="blog-image"><img src="images/category-5-400x250.jpg" alt="Blog Image"></div>
-
-						<div class="category">
-							<div class="display-table center-text">
-								<div class="display-table-cell">
-									<h3><b>MUSIC</b></h3>
-								</div>
-							</div>
-						</div>
-
-					</a>
-				</div><!-- swiper-slide -->
-
-				<div class="swiper-slide">
-					<a class="slider-category" href="#">
-						<div class="blog-image"><img src="images/category-6-400x250.jpg" alt="Blog Image"></div>
-
-						<div class="category">
-							<div class="display-table center-text">
-								<div class="display-table-cell">
-									<h3><b>MOVIE</b></h3>
-								</div>
-							</div>
-						</div>
-
-					</a>
-				</div><!-- swiper-slide -->
-
+<?php endforeach; ?>
+<?php }?>
+				
 			</div><!-- swiper-wrapper -->
 
 		</div><!-- swiper-container -->

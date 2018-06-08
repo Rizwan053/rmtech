@@ -33,9 +33,9 @@
                               </ul>
                         </li>
 						<li>
-                            <a href="#">
-								<i class="ti-settings"></i>
-								<p>Settings</p>
+                            <a href="/logout.php">
+								<i class=""></i>
+								<p>Logout</p>
                             </a>
                         </li>
                     </ul>

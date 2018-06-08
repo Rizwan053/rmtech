@@ -27,6 +27,13 @@ class Post extends Db_object
         return $this->upload_directory.'/'.$this->image;
     }
 
+    public static function search($query){
+        // global $database;
+        $sql = "SELECT * FROM posts WHERE title LIKE '%$query%' ORDER BY id DESC ";
+        return self::find_by_query($sql);
+        
+    }
+
     
 
 }//endOfclass

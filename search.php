@@ -1,8 +1,13 @@
-<?php include('includes/header.php')?>
+<?php include('includes/header.php') ?>
 <?php 
-$posts = Post::find_all();
+if (isset($_POST['src'])) {
+    $search = $_POST['search'];
+    $src = Post::search($search);
+ }
 
 ?>
+
+
 
 
 
@@ -14,12 +19,15 @@ $posts = Post::find_all();
 
 	<section class="blog-area section">
 		<div class="container">
-
+<?php if ($src) { ?>
+  <div class=' container-fluid  '>
+<h4  class='alert alert-success text-center ' >Result of Your Search Keyword <?php echo strtoupper($search) ?></h4>
+</div>
 			<div class="row">
-<?php if ($posts) : ?>
-<?php foreach($posts as $post) : ?>
-
-				<div class="col-lg-4 col-md-6">
+          
+		
+<?php foreach ($src as $post) : ?>
+		<div class="col-lg-4 col-md-6">
 					<div class="card h-100">
 	
 						<div class="single-post post-style-1">
@@ -30,7 +38,7 @@ $posts = Post::find_all();
 
 							<div class="blog-info">
 
-								<h4 class="title"><a href="/post.php?id=<?php echo $post->id ?>"><b><?php echo $post->title;?>
+								<h4 class="title"><a href="/post.php?id=<?php echo $post->id ?>"><b><?php echo $post->title; ?>
 								</b></a></h4>
 
 								<ul class="post-footer">
@@ -44,9 +52,22 @@ $posts = Post::find_all();
 					</div><!-- card -->
 				</div><!-- col-lg-4 col-md-6 -->
 <?php endforeach; ?>
-<?php endif; ?>				
+</div>
+<?php } 
+else{
+    echo " <div class=' row justify-content-center '>
+                    <div class=' container-fluid col-12 '>
+                    <h4  class='alert alert-danger text-center ' >No Result Found! Try to use another Keyword</h4>
+                    </div>
+                    </div> ";
+}
+?>		
 
-			</div><!-- row -->
+
+
+
+
+
 
 			<a class="load-more-btn" href="#"><b>LOAD MORE</b></a>
 
@@ -54,4 +75,4 @@ $posts = Post::find_all();
 	</section><!-- section -->
 
 
-<?php require_once('includes/footer.php')?>
+<?php require_once('includes/footer.php') ?>

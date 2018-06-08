@@ -11,12 +11,25 @@ if(empty($_GET['id'])){
 if (isset($_POST['submit'])) {
     $posts = new Post();
     $posts->id = $_GET['id'];    
+    $posts->category_id = $_POST['category_id'];
     $posts->title = $_POST['title'];
     $posts->url = $_POST['url'];
     $posts->body = $_POST['body'];
 
-    $posts->update();
+    if(is_array($_FILES['image'])){
+        $posts->uploads($_FILES['image']);
+        $target = "images/$posts->image";
+        // unlink($posts->path());
+        
+        move_uploaded_file($posts->tmp_path, $target);
+        
+        $posts->update();
+    }else{
+        
+        $posts->image = '';
+        $posts->update();
 
+    }
     // header('location:posts.php');
         echo "<script>alert('Post Updated Succesfully');document.location='posts.php'</script>";
     
@@ -51,19 +64,25 @@ $post = Post::find_by_id($_GET['id']);
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
+                    
+                    <div class="col-md-8">
                         <div class="card">
                             <div class="header">
+                            
                                 
                                 <h4 class="title">Edit Post</h4>
                                 <p class="category">Fill All Field Required:</p>
                             </div>
                             <div class="content table-responsive ">
 
-                        <form action="" method="post">
+                        <form action="" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label for="title">Title</label>
                                         <input type="text" name="title" class="form-control" value="<?php echo $post->title?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="image">Upload:</label>
+                                        <input type="file" name="image" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label for="url">URL</label>                                        
@@ -94,6 +113,10 @@ $post = Post::find_by_id($_GET['id']);
 
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-4">
+<img height=400 width=400 class="img-thumbnail" src=" <?php echo $post->image ? $post->path() : 'http://via.placeholder.com/400x400' ?>" alt="">
+
                     </div>
 
 

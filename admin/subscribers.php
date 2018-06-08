@@ -18,7 +18,7 @@
 		
 <?php 
 
-$posts = Post::find_all();
+$subscribers = Subscriber::find_all();
 
 ?>
 
@@ -28,38 +28,27 @@ $posts = Post::find_all();
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <a class="btn btn-success pull-right" href="create_post.php">Add New Post</a>
+                                <a class="btn btn-success pull-right" href="create_subscriber.php">Add New subscriber</a>
                                 
-                                <h4 class="title">Posts</h4>
-                                <p class="category">All Published Post on this Application</p>
+                                <h4 class="title">Subscribers</h4>
+                                <p class="category">All Subscriber of this Application</p>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-striped">
                                     <thead>
                                     	<th>ID</th>
-                                    	<th>Image</th>
-                                    	<th>Title</th>
-                                    	<th>Category</th>
-                                    	<th>URL</th>
-                                    	<th>Body</th>
-                                    	<th>Edit</th>
+                                    	<th>Email</th>
                                     	<th>Delete</th>
                                     </thead>
                                     <tbody>
-<?php foreach ($posts as $post): ?>
+<?php foreach ($subscribers as $subscriber) : ?>
 
                                     <tr>
-                                        	<td><?php echo $post->id ? $post->id : "Not Available" ?></td>
-                                        	<td><img height=100 width=100 class="img-thumbnail" src=" <?php echo $post->image ? $post->path() : "http://via.placeholder.com/100x100?text=Not Available" ?>" alt=""></td>
+                                        	<td><?php echo $subscriber->id ? $subscriber->id : "Not Available" ?></td>
+                                        	<td><?php echo $subscriber->email ? $subscriber->email : "Not Available" ?></td>
                                     
-                                        	<td><?php echo $post->title ? $post->title : "Not Available"?></td>
                                         	
-                                            <?php $category = Category::find_by_id($post->category_id) ?>
-                                            <td><?php echo $category->name ? $category->name : "Not Available" ?></td>
-                                        	<td><?php echo $post->url ? $post->url : "Not Available"?></td>
-                                        	<td><?php echo $post->body ? $post->body : "Not Available"?></td>
-                                        	<td><a class="btn btn-info" href="edit_post.php?id=<?php echo $post->id?>">Edit</a></td>
-                                        	<td><a onclick="return confirm('Do You Sure to Delete This Post')"class="btn btn-danger" href="delete_post.php?id=<?php echo $post->id?>">Delete</a></td>
+                                        	<td><a onclick="return confirm('Do You Sure to Delete This subscriber')"class="btn btn-danger" href="delete_subscriber.php?id=<?php echo $subscriber->id ?>">Delete</a></td>
                                         	
                                         </tr>
                                        

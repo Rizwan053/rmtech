@@ -23,27 +23,51 @@
 				<div class="col-lg-4 col-md-6">
 						<div class="footer-section">
 						<h4 class="title"><b>CATAGORIES</b></h4>
+<?php $categories = Category::find_all();
+if ($categories) {
+?>
+<?php foreach ($categories as $category) : ?>
 						<ul>
-							<li><a href="#">BEAUTY</a></li>
-							<li><a href="#">HEALTH</a></li>
-							<li><a href="#">MUSIC</a></li>
+							<li><a href="#"><?php echo $category->id ? $category->name : 'Not Available'?></a></li>
 						</ul>
-						<ul>
-							<li><a href="#">SPORT</a></li>
-							<li><a href="#">DESIGN</a></li>
-							<li><a href="#">TRAVEL</a></li>
-						</ul>
+						<!-- <ul>
+							<li><a href="#"><?php echo $category->name ?></a></li>
+						</ul> -->
+						
+<?php endforeach; ?>
+<?php 
+} ?>
+
 					</div><!-- footer-section -->
 				</div><!-- col-lg-4 col-md-6 -->
 
 				<div class="col-lg-4 col-md-6">
 					<div class="footer-section">
+<?php 
+if (isset($_POST['subs'])) {
 
+	if (!$_POST['email'] ) {
+			echo " 
+                    <h4  class='alert alert-danger text-center ' >Must Filled Valid Email</h4>
+                     ";
+	} else {
+		$subscriber = new Subscriber();
+		$subscriber->email = $_POST['email'];
+		$subscriber->create();
+		echo "<script>alert('Subscribed Succesfully');document.location='/'</script>";
+		
+
+	}
+
+	// header('location:/');
+
+}
+?> 
 						<h4 class="title"><b>SUBSCRIBE</b></h4>
 						<div class="input-area">
-							<form>
-								<input class="email-input" type="text" placeholder="Enter your email">
-								<button class="submit-btn" type="submit"><i class="icon ion-ios-email-outline"></i></button>
+							<form method="post">
+								<input class="email-input" name="email" type="email" placeholder="Enter your email" reuired>
+								<button class="submit-btn" name="subs" type="submit"><i class="icon ion-ios-email-outline"></i></button>
 							</form>
 						</div>
 
@@ -66,6 +90,10 @@
 	<script src="./assets/common-js/swiper.js"></script>
 
 	<script src="./assets/common-js/scripts.js"></script>
+	<script>
+	$('.alert').delay(5000).slideUp(500);
+	
+	</script>
 
 </body>
 </html>

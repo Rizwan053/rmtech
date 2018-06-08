@@ -25,6 +25,12 @@
                         <p>Categories</p>
                     </a>
                 </li>
+                <li id="act" >
+                    <a href="subscribers.php">
+                        <i class="ti-user"></i>
+                        <p>Subscribers</p>
+                    </a>
+                </li>
                
             </ul>
     	</div>

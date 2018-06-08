@@ -1,5 +1,10 @@
 <?php require_once('classes/init.php') ?>
 
+<?php 
+!$session->check_login() ? header('location:/login.php') : '';
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
