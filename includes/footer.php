@@ -28,7 +28,7 @@ if ($categories) {
 ?>
 <?php foreach ($categories as $category) : ?>
 						<ul>
-							<li><a href="#"><?php echo $category->id ? $category->name : 'Not Available'?></a></li>
+							<li><a href="category.php?id=<?php echo $category->id; ?>"><?php echo $category->id ? $category->name : 'Not Available'?></a></li>
 						</ul>
 						<!-- <ul>
 							<li><a href="#"><?php echo $category->name ?></a></li>

@@ -9,7 +9,7 @@ if($categories){
 ?>
 <?php foreach($categories as $category): ?>
 				<div class="swiper-slide">
-					<a class="slider-category" href="#">
+					<a class="slider-category" href="category.php?id=<?php echo $category->id; ?>">
 						<div class="blog-image"><img src="images/category-<?php echo rand(1,6)?>-400x250.jpg" alt="Blog Image"></div>
 
 						<div class="category">

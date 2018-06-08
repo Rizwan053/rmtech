@@ -32,9 +32,23 @@ class Post extends Db_object
         $sql = "SELECT * FROM posts WHERE title LIKE '%$query%' ORDER BY id DESC ";
         return self::find_by_query($sql);
         
+        
     }
 
-    
+    public function cascade_delete(){
+        global $database;
+        if($this->delete()){
+            $sql = "DELETE FROM comments WHERE post_id=$this->id";
+            $database->query($sql);
+        }else{
+            return false;
+        }
+    }
+    public function find_by_category($id){
+        global $database;
+        $sql = "SELECT * FROM posts WHERE category_id=$id";
+        return self::find_by_query($sql);
+    }
 
 }//endOfclass
 

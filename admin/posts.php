@@ -41,7 +41,6 @@ $posts = Post::find_all();
                                     	<th>Title</th>
                                     	<th>Category</th>
                                     	<th>URL</th>
-                                    	<th>Body</th>
                                     	<th>Edit</th>
                                     	<th>Delete</th>
                                     </thead>
@@ -52,12 +51,11 @@ $posts = Post::find_all();
                                         	<td><?php echo $post->id ? $post->id : "Not Available" ?></td>
                                         	<td><img height=100 width=100 class="img-thumbnail" src=" <?php echo $post->image ? $post->path() : "http://via.placeholder.com/100x100?text=Not Available" ?>" alt=""></td>
                                     
-                                        	<td><?php echo $post->title ? $post->title : "Not Available"?></td>
+                                        	<td><a href="/post.php?id=<?php echo $post->id ?>"><?php echo $post->title ? $post->title : "Not Available"?></a></td>
                                         	
                                             <?php $category = Category::find_by_id($post->category_id) ?>
-                                            <td><?php echo $category->name ? $category->name : "Not Available" ?></td>
+                                            <td><a href="/category.php?id=<?php echo $category->id; ?>"><?php echo $category->name ? $category->name : "Not Available" ?></a></td>
                                         	<td><?php echo $post->url ? $post->url : "Not Available"?></td>
-                                        	<td><?php echo $post->body ? $post->body : "Not Available"?></td>
                                         	<td><a class="btn btn-info" href="edit_post.php?id=<?php echo $post->id?>">Edit</a></td>
                                         	<td><a onclick="return confirm('Do You Sure to Delete This Post')"class="btn btn-danger" href="delete_post.php?id=<?php echo $post->id?>">Delete</a></td>
                                         	

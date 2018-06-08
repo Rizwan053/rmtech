@@ -6,4 +6,5 @@
 <?php require_once('session.php');  ?>
 <?php require_once('category.php');   ?>
 <?php require_once('post.php');       ?>
+<?php require_once('comment.php');       ?>
 <?php require_once('subscriber.php');       ?>

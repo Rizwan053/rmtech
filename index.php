@@ -24,7 +24,7 @@ $posts = Post::find_all();
 	
 						<div class="single-post post-style-1">
 
-							<div class="blog-image"><img src="/admin/<?php echo $post->path(); ?>" alt="Blog Image"></div>
+							<div class="blog-image"><img class="img-thumbnail" src="/admin/<?php echo $post->image ? $post->path() : "http://via.placeholder.com/400x400?text=Not Available" ?>" alt="blog-image"></div>
 
 							<!-- <a class="avatar" href="#"><img src="images/icons8-team-355979.jpg" alt="Profile Image"></a> -->
 

@@ -69,7 +69,7 @@ $categories = Category::find_all();
 
                                     <tr>
                                         	<td><?php echo $category->id ? $category->id : "Not Available" ?></td>
-                                        	<td><?php echo $category->name ? $category->name : "Not Available" ?></td>
+                                        	<td><a href="/category.php?id=<?php echo $category->id; ?>"><?php echo $category->name ? $category->name : "Not Available" ?></a></td>
                                             <td><a class="btn btn-info" href="edit_category.php?id=<?php echo $category->id ?>">Edit</a></td>
                                             <!-- <td> -->
 <!-- <form class="form-inline" action="" method="post"> -->

@@ -31,6 +31,12 @@
                         <p>Subscribers</p>
                     </a>
                 </li>
+                <li id="act" >
+                    <a href="comments.php">
+                        <i class="ti-comments"></i>
+                        <p>Comments</p>
+                    </a>
+                </li>
                
             </ul>
     	</div>
