@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-	<title>TITLE</title>
+	<title>RM Tech World</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8">
@@ -39,13 +39,15 @@
 	<header>
 		<div class="container-fluid position-relative no-side-padding">
 
-			<a href="/" class="logo"><img src="images/logo.png" alt="Logo Image"></a>
+			<a href="/" class="logo"><b>RM Tech World</b></a>
 
 			<div class="menu-nav-icon" data-nav-menu="#main-menu"><i class="ion-navicon"></i></div>
 
 			<ul class="main-menu visible-on-click" id="main-menu">
 				<li><a href="/">Home</a></li>
+				
 			</ul><!-- main-menu -->
+			
 
 			<div class="src-area">
 				<form action="/search.php" method='post'>
@@ -53,6 +55,9 @@
 					<input class="src-input" name="search" type="text" placeholder="Type of search">
 				</form>
 			</div>
+
+
+			
 
 		</div><!-- conatiner -->
 	</header>

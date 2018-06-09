@@ -2,7 +2,8 @@
 
 class Session extends DB_Object
 {
-    
+    public $count;
+
     function __construct()
     {
         session_start();
@@ -52,6 +53,19 @@ class Session extends DB_Object
             return true;
         }else{
             return false;
+        }
+    }
+
+    public function visitor_count(){
+        if (isset($_SESSION['count'])) {
+
+            return $this->count = $_SESSION['count']++;
+
+        } else {
+
+            return $_SESSION['count'] = 1;
+
+
         }
     }
 

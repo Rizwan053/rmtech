@@ -49,5 +49,13 @@
 
     	});
 	</script>
+    <script>
+    new Chartist.Bar('.ct-chart', {
+  labels: ['Posts', 'Categories', 'Comments', 'Subscribers'],
+  series: [<?php echo count($posts)?>, <?php echo count($categories) ?>, <?php echo count($comments) ?>, <?php echo count($subscribers) ?>, ]
+}, {
+  distributeSeries: true
+});
+    </script>
 
 </html>

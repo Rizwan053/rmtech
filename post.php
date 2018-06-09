@@ -59,19 +59,21 @@ if(isset($_POST['submit'])){
 
 						</div><!-- post-top-area -->
 
-						<div class="post-image"><img class="img-thumbnail" src="/admin/<?php echo $post->image ? $post->path() : "http://via.placeholder.com/600x600?text=Not Available" ?>" alt="blog-image"></div>
+						<div class="post-image"><img class="img-thumbnail" src="<?php echo $post->image ? 'admin/'.$post->path() : "http://via.placeholder.com/600x600" ?>" alt="blog-image"></div>
 
 						<div class="post-bottom-area">
 
 							<p class="para"><?php echo $post->body ?></p>
 
 						
-
+<?php $comments = Comment::find_by_post($post->id); ?>
+<?php $category = Category::find_by_id($post->category_id); ?>
 							<div class="post-icons-area">
 								<ul class="post-icons">
-									<li><a href="#"><i class="ion-heart"></i>57</a></li>
-									<li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
-									<li><a href="#"><i class="ion-eye"></i>138</a></li>
+									<li><a href=""><i class="ion-pricetags"></i><?php echo $category->name ?></a></li>
+									<li><a href=""><i class="ion-chatbubble"></i><?php echo count($comments) ?></a></li>
+									<li><a href=""><i class="ion-eye"></i><?php echo rand(0, 100); ?></a></li>
+								</ul>
 								</ul>
 
 								<ul class="icons">
@@ -126,9 +128,9 @@ if(isset($_POST['submit'])){
 							</div><!-- row -->
 						</form>
 					</div><!-- comment-form -->
-<?php $comments = Comment::find_all(); ?>
+<?php $comments = Comment::find_by_post($_GET['id']); ?>
+					<h4><b>COMMENTS(<?php echo count($comments) ?>)</b></h4>
 
-					<h4><b>COMMENTS(<?php echo count($comments)?>)</b></h4>
 <?php if ($comments): ?>
 <?php foreach ($comments as $comment): ?>
 
@@ -163,7 +165,7 @@ if(isset($_POST['submit'])){
 <?php endif;?>
 					
 
-					<a class="more-comment-btn" href="#"><b>VIEW MORE COMMENTS</a>
+			
 
 				</div><!-- col-lg-8 col-md-12 -->
 

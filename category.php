@@ -43,7 +43,7 @@ $posts = Post::find_by_category($_GET['id']);
 	
 						<div class="single-post post-style-1">
 
-							<div class="blog-image"><img src="/admin/<?php echo $post->path(); ?>" alt="Blog Image"></div>
+							<div class="blog-image"><img class="img-thumbnail" src="<?php echo $post->image ? 'admin/' . $post->path() : "http://via.placeholder.com/400x400" ?>" alt="blog-image"></div>
 
 							<!-- <a class="avatar" href="#"><img src="images/icons8-team-355979.jpg" alt="Profile Image"></a> -->
 
@@ -51,11 +51,14 @@ $posts = Post::find_by_category($_GET['id']);
 
 								<h4 class="title"><a href="/post.php?id=<?php echo $post->id ?>"><b><?php echo $post->title; ?>
 								</b></a></h4>
+<?php $comments = Comment::find_by_post($post->id); ?>
+<?php $category = Category::find_by_id($post->category_id); ?>
 
 								<ul class="post-footer">
-									<li><a href="#"><i class="ion-heart"></i>57</a></li>
-									<li><a href="#"><i class="ion-chatbubble"></i>6</a></li>
-									<li><a href="#"><i class="ion-eye"></i>138</a></li>
+									<li><a href="/post.php?id=<?php echo $post->id ?>"><i class="ion-pricetags"></i><?php echo $category->name ?></a></li>
+									<li><a href="/post.php?id=<?php echo $post->id ?>"><i class="ion-chatbubble"></i><?php echo count($comments) ?></a></li>
+									<li><a href="/post.php?id=<?php echo $post->id ?>"><i class="ion-eye"></i><?php echo rand(0, 100); ?></a></li>
+
 								</ul>
 
 							</div><!-- blog-info -->
@@ -80,7 +83,7 @@ $posts = Post::find_by_category($_GET['id']);
 
 
 
-			<a class="load-more-btn" href="#"><b>LOAD MORE</b></a>
+			
 
 		</div><!-- container -->
 	</section><!-- section -->

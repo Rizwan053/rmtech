@@ -8,3 +8,4 @@
 <?php require_once('post.php');       ?>
 <?php require_once('comment.php');       ?>
 <?php require_once('subscriber.php');       ?>
+<?php require_once('paginate.php');       ?>

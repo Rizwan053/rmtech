@@ -28,7 +28,6 @@ $subscribers = Subscriber::find_all();
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <a class="btn btn-success pull-right" href="create_subscriber.php">Add New subscriber</a>
                                 
                                 <h4 class="title">Subscribers</h4>
                                 <p class="category">All Subscriber of this Application</p>

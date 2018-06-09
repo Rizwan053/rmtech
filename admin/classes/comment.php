@@ -8,7 +8,12 @@ class Comment extends Db_object{
     public $name;
     public $email;
     public $body;
-
+            
+    public static function find_by_post($id){
+    global $database;
+    $sql = "SELECT * FROM comments WHERE post_id=$id";
+    return self::find_by_query($sql);
+    }
 
 
 }
